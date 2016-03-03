@@ -36,6 +36,7 @@ var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngRoute','ngResource'])
 // then access through $routeParams service. More information on this in the dishCtrl.js 
 dinnerPlannerApp.config(['$routeProvider',
   function($routeProvider) {
+    console.log("Heeeeej");
     $routeProvider.
       when('/home', {
         templateUrl: 'partials/home.html'
