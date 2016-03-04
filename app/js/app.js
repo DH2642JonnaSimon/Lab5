@@ -34,9 +34,9 @@ var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngRoute','ngResource'])
 // the path we use the ":" sign. For instance, our '/dish/:dishId' will be triggered when we access 
 // 'http://localhost:8000/#/dish/12345'. The 12345 value will be stored in a dishId parameter, which we can
 // then access through $routeParams service. More information on this in the dishCtrl.js 
+
 dinnerPlannerApp.config(['$routeProvider',
   function($routeProvider) {
-    console.log("Heeeeej");
     $routeProvider.
       when('/home', {
         templateUrl: 'partials/home.html'

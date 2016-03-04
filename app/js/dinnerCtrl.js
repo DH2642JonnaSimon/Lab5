@@ -4,11 +4,15 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
 
   $scope.numberOfGuests = Dinner.getNumberOfGuests();
 
+Dinner.DishSearch.get({title_kw:'chicken'});
+
   $scope.setNumberOfGuest = function(number){
+  	console.log("Set number of guests - controller");
     Dinner.setNumberOfGuests(number);
   }
 
   $scope.getNumberOfGuests = function() {
+  	console.log("Get number of guests - controller");
     return Dinner.getNumberOfGuests();
   }
 

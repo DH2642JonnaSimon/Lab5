@@ -1,5 +1,59 @@
 <!-- We include the sidebar as it is shared across two screens. -->
+
 <ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
 
 <!-- TODO in Lab 5: Display the dish information including image, Description, 
 Instructions, Ingredients and total cost. -->
+
+<!-- <br>
+<img ng-src="{{dish.ImageURL}}"/>
+ {{dish.Title}}
+ {{dish.Category}} {{dish.Subcategory}}
+
+</div> -->
+
+<div id="dishPreview" class="col-xs-7 col-sm-9 col-md-9 pre-scrollable" ng-controller="DishCtrl">
+	<div class="row" id="dishPreviewRow">
+		<div id="mainContent" class="col-xs-12 col-sm-12 col-md-6">
+			<h1 id="headerContent">{{dish.Title}}</h1>
+			<div id="imgeDiv">
+				<image class="img-thumbnail " id="imagee" ng-src="{{dish.ImageURL}}" style=""></image>
+				<p>{{dish.Description}}</p>
+			</div>
+			<button id="back" type="button" class="btn btn-warning btn-responsive back">back to Select Dish</button>
+		</div>
+		<div id="ingredientsContent" class="col-xs-12 col-sm-12 col-md-6">
+			<div class="table-responsive">
+				<table class="table borderless" id="ingredients">
+					<h3 style='width: 100%;'>Ingredients for {{getNumberOfGuests()}} People</h3>
+
+					<tbody style='border-top: 1px solid #000;'>
+						<tr ng-repeat="ingredient in ingredients">
+							<td style='border: 0px !important;'>
+								{{ingredient.Quantity*getNumberOfGuests()}}
+ 								{{ingredient.Unit}}
+ 							</td>
+ 							<td style='border: 0px !important;'>
+ 								{{ingredient.Name}}
+ 							</td>
+ 							<td style='border: 0px !important;'>
+ 								{{ingredient.Quantity*getNumberOfGuests()}}
+ 							</td>
+ 							<td style='border: 0px !important;'>
+ 						</tr>
+ 						<tr style='border-top: 1px solid #000;'>
+ 							<td style='text-align:right;border: 0px !important;' colspan='4'>
+ 								TotalPrice: {{totalPrice*getNumberOfGuests()s}}
+ 							</td>
+ 						</tr>"
+				</table>
+			</div>
+			<button id="confirm" type="button" class="btn btn-warning btn-responsive confirm">Confirm Dish</button>
+		</div>
+	</div>
+	<div id="Preparations">
+		<br>
+		<h2 id="headerPrep">Preparations></h2>
+		<p id="instructions">{{dish.Instructions}}</p>
+	</div>
+</div>
