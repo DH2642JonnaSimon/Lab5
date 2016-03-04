@@ -141,7 +141,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     if(addedDish){
       this.menu[addedDish.Category] = addedDish;  
     }
-
   }
 
   //Removes dish from menu

@@ -24,8 +24,4 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
     	return Dinner.getNumberOfGuests();
   	}
 
-/*  	$scope.TotalPrice = function() {
-  		console.log("Nu är jag inne numFunc in DishC");
-    	var Dinner.getNumberOfGuests();
-  	}*/
 });
