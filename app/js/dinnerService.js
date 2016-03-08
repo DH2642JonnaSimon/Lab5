@@ -5,8 +5,17 @@
 // the next time.
 dinnerPlannerApp.factory('Dinner',function ($resource) {
 
-  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'66J8l00npnHHZcCNLRhxkfW1OHxbojy4'});
-  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'66J8l00npnHHZcCNLRhxkfW1OHxbojy4'});
+/*0OV23011kU7B3VVVgxTTTIfdNXeTI3us
+  66J8l00npnHHZcCNLRhxkfW1OHxbojy4
+  XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN
+  3stL5NVP4s6ZkmK5gt4dci8a4zOQRpD4
+  8vtk7KykflO5IzB96kb0mpot0sU40096
+  1hg3g4Dkwr6pSt22n00EfS01rz568IR6
+  r02x0R09O76JMCMc4nuM0PJXawUHpBUL
+  H9n1zb6es492fj87OxDtZM9s5sb29rW3*/
+
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'1hg3g4Dkwr6pSt22n00EfS01rz568IR6'});
+  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'1hg3g4Dkwr6pSt22n00EfS01rz568IR6'});
   
   this.numberOfGuests = 1.00;
   this.menu = {"Appetizer": "", "Main dish": "", "Dessert": ""};

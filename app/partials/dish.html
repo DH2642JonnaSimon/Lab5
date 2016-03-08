@@ -13,13 +13,12 @@ Instructions, Ingredients and total cost. -->
 				<image class="img-thumbnail " id="imagee" ng-src="{{dish.ImageURL}}" style=""></image>
 				<p>{{dish.Description}}</p>
 			</div>
-			<button id="back" type="button" class="btn btn-warning btn-responsive back">back to Select Dish</button>
+			<a href="#/search" id="back" pe="button" class="btn btn-warning btn-responsive back" role="button">back to Select Dish</a>
 		</div>
 		<div id="ingredientsContent" class="col-xs-12 col-sm-12 col-md-6">
 			<div class="table-responsive">
 				<table class="table borderless" id="ingredients">
 					<h3 style='width: 100%;'>Ingredients for {{getNumberOfGuests()}} People</h3>
-
 					<tbody style='border-top: 1px solid #000;'>
 						<tr ng-repeat="ingredient in ingredients">
 							<td style='border: 0px !important;'>
@@ -36,12 +35,12 @@ Instructions, Ingredients and total cost. -->
  						</tr>
  						<tr style='border-top: 1px solid #000;'>
  							<td style='text-align:right;border: 0px !important;' colspan='4'>
- 								TotalPrice: {{totalPrice*getNumberOfGuests()s}}
+ 								TotalPrice: {{totalPrice*getNumberOfGuests()}}
  							</td>
  						</tr>"
 				</table>
 			</div>
-			<button id="confirm" type="button" class="btn btn-warning btn-responsive confirm">Confirm Dish</button>
+			<a href="#/overview" id="confirm" pe="button" class="btn btn-warning btn-responsive confirm" role="button">Confirm Dish</a>
 		</div>
 	</div>
 	<div id="Preparations">
