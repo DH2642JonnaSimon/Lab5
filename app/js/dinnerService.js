@@ -14,11 +14,11 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   r02x0R09O76JMCMc4nuM0PJXawUHpBUL
   H9n1zb6es492fj87OxDtZM9s5sb29rW3*/
 
-  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'1hg3g4Dkwr6pSt22n00EfS01rz568IR6'});
-  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'1hg3g4Dkwr6pSt22n00EfS01rz568IR6'});
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'r02x0R09O76JMCMc4nuM0PJXawUHpBUL'});
+  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'r02x0R09O76JMCMc4nuM0PJXawUHpBUL'});
   
   this.numberOfGuests = 1.00;
-  this.menu = {"Appetizer": "", "Main dish": "", "Dessert": ""};
+  this.menu = {"Appetizers": "", "Desserts": "", "Main Dish": ""};
   this.pendingDish = "";
   this.pg = 1;
   this.rpp = 8;
@@ -40,7 +40,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       this.pendingDish = "";
       return;
     }
-    console.log(dish);
     this.pendingDish = dish;
   }
 
@@ -105,30 +104,24 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
           if(this.pendingDish.Category == this.menu[d].Category){
             status = true;
             for(a in this.pendingDish.Ingredients) {
-              console.log("tja2");
               amountOfIng += this.pendingDish.Ingredients[a].Quantity;
             }
           }else{
             for(a in this.menu[d].Ingredients) {
-              console.log("tja1");
               amountOfIng += this.menu[d].Ingredients[a].Quantity;
             }
 
           }
             var dishPrice = amountOfIng * this.numberOfGuests;
             prices.push(dishPrice);
-            console.log(dishPrice);
         }
 
       for (var i = 0; i < prices.length; i++) {
           totalPrice += prices[i] << 0;
       }
-      console.log("total price: innan " + totalPrice);
       if(status != true){
-        console.log("tja");
           totalPrice += pendingPrice; 
         }
-        console.log("total price: efter " + totalPrice);
     }
     return totalPrice;
 
@@ -141,6 +134,20 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       price += dish.ingredients[ingredient].price;
     }
     return price;
+  }
+
+    this.getDishPrices = function() {
+      console.log(this.menu + "Hur der menyn ut?");
+      var prices = [];
+      for(dish in this.menu){
+        var price = 0;
+        for(ingredient in this.menu[dish].Ingredients){
+          price += this.menu[dish].Ingredients[ingredient].Quantity;
+        }
+        prices.push(price);
+        console.log("SUSPENSOUR");
+      }
+    return prices;
   }
 
   //Adds the passed dish to the menu. If the dish of that type already exists on the menu

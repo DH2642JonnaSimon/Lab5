@@ -1,6 +1,6 @@
 <!-- We include the sidebar as it is shared across two screens. -->
 
-<ng-include src="'partials/dinner-sidebar.html'"></ng-include>
+<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
 
 <!-- TODO in Lab 5: Display the dish information including image, Description, 
 Instructions, Ingredients and total cost. -->
@@ -40,7 +40,7 @@ Instructions, Ingredients and total cost. -->
  						</tr>"
 				</table>
 			</div>
-			<a href="#/overview" id="confirm" pe="button" class="btn btn-warning btn-responsive confirm" role="button">Confirm Dish</a>
+			<a href="#/search" id="confirm" pe="button" ng-click="addToMenu()" class="btn btn-warning btn-responsive confirm" role="button">Confirm Dish</a>
 		</div>
 	</div>
 	<div id="Preparations">

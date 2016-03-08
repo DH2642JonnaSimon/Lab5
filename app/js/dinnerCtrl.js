@@ -16,6 +16,16 @@ Dinner.DishSearch.get({title_kw:'chicken'});
     return Dinner.getNumberOfGuests();
   }
 
+
+    $scope.getMenu = function(){
+      $scope.menu = Dinner.menu;
+      console.log($scope.menu);
+      var pris = 0.00;
+      $scope.prices = [];
+      $scope.prices = Dinner.getDishPrices();
+    }
+
+
   // TODO in Lab 5: Implement the methods to get the dinner menu
   // add dish to menu and get total menu price
 

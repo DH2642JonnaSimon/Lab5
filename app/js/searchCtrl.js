@@ -28,13 +28,21 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
 
    $scope.selectSearch = function(query2, query) {
     Dinner.DishSearch.get({include_primarycat:query2},function(data){
-     alert(query2 + " " + query);
-     alert(data.Results.length);
      $scope.dishes=data.Results;
-     $scope.status = "Showing " + data.Results.length + " results";
+     $scope.status = "Showing " + " results";
      console.log(data.Results);
-   },function(data){
+    $("#viewDishes").css("height", $("#selectDishView").height()-$("#selectDishBackground").height() - 10);
+  
+    },function(data){
      $scope.status = "There was an error";
    });
  }
+
+  $scope.getNumberOfGuests = function() {
+      console.log("HEHEHEHEH HEHEHEHEH HEHEHEH");
+      return Dinner.getNumberOfGuests();
+    }
+
+
+
 });

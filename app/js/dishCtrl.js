@@ -11,10 +11,9 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
      	var pris = 0.00;
      	for (x in data.Ingredients){
      		pris += data.Ingredients[x].Quantity;
-     		console.log(pris);
      	}
+      Dinner.setPendingDish(data);
      	$scope.totalPrice = pris;
-     	alert(data);
    			},function(data){
      	$scope.status = "There was an error";
    	});
@@ -23,5 +22,10 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   		console.log("Nu är jag inne numFunc in DishC");
     	return Dinner.getNumberOfGuests();
   	}
+
+    $scope.addToMenu = function(){
+      var pendingDish = Dinner.getPendingDish();
+      Dinner.addDishToMenu(pendingDish);
+    }
 
 });
