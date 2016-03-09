@@ -53,6 +53,10 @@ dinnerPlannerApp.config(['$routeProvider',
         templateUrl: 'partials/menuOverview.html',
         controller: 'MenuOverviewCtrl'
       }).
+      when('/fullrecipe', {
+        templateUrl: 'partials/fullRecipe.html',
+        controller: 'MenuOverviewCtrl'
+      }).
       // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
       otherwise({
         redirectTo: '/home'
