@@ -140,7 +140,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       console.log(this.menu + "Hur der menyn ut?");
       var prices = [];
       for(dish in this.menu){
-        var price = 0;
+        var price = 0.00;
         for(ingredient in this.menu[dish].Ingredients){
           price += this.menu[dish].Ingredients[ingredient].Quantity;
         }
