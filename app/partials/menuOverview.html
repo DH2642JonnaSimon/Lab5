@@ -2,33 +2,37 @@
 
 <!-- TODO in Lab 5: Display the dish information including image, Description, 
 Instructions, Ingredients and total cost. -->
-<div id="lastOverview" class="col-xs-12 col-sm-12 col-md-12" style="vertical-align: top; margin: 0 auto;">
+<div id="lastOverview" class="col-xs-12 col-sm-12 col-md-12" style="vertical-align: top; margin: 0 auto;" ng-controller="MenuOverviewCtrl" ng-init="init()">
 
-	<div class="row" id="headRow"><div id="buttondiv">
+	<div class="row" id="headRow">
+	<div id="buttondiv" class="row">
 		<div id="mainContent" class="col-xs-12 col-sm-8 col-md-8">
-			<h1 id="headerContent">My dinner: NUMBEROF GUESTS people</h1>
+			<h1 id="headerContent">My dinner: {{numberOfGuests}} people</h1>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4">
-			<button id="back2" type="button" class="button back btn btn-warning btn-responsive">Go back and edit dinner
-			</button>
+			<a href="#/search" id="button" pe="button" class="button back btn btn-warning btn-responsive" role="button">Go back and edit dinner</a>
 		</div>
 	</div>
-	<div id="mainRow" class="row table pre-scrollable col-xs-12 col-sm-12 col-md-12">
+	</div>
+
+	<div class="row table pre-scrollable"> 
+
+	<div id="mainRow" class="row col-xs-12 col-sm-12 col-md-12">
 		<div class="col-xs-9 col-sm-9 col-md-9" id="verticalLine">
 
 
-				<div ng-repeat="dish in menu" id="rootDivImage" class="col-xs-12 col-sm-4 col-md-4">
+				<div ng-repeat="dish in menu" id="rootDivImage" class="col-xs-12 col-sm-4 col-md-4" ng-hide="!dish.Title">
 					<div id="closureDiv">
 						<div id="overviewPic">
 							<div id="imageDiv">
-								<image class="img-thumbnail " src="' + finalMenu[x].ImageURL + '" style="height:180px;width: 180px;">
+								<image class="img-thumbnail " src="{{dish.ImageURL}}" style="height:180px;width: 180px;">
 								</image>
 							</div>
 							<div class="dishHeadDiv">
 								<h3 class="">{{dish.Title}}</h3>
 							</div>
 						</div>
-						<p class="oblique small white"> Price:{{prices[$index]*getNumberOfGuests()}}</p>
+						<p class="oblique small white"> Price:{{prices[$index]*numberOfGuests}}</p>
 					</div>
 				</div>
 
@@ -36,14 +40,19 @@ Instructions, Ingredients and total cost. -->
 
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3" id="TotPriceDiv">
-			<p id="TotPricePos" class="oblique big red">Total Price: 000000 SEK</p>
+			<p id="TotPricePos" class="oblique big red">Total Price: {{totalPrice*numberOfGuests}} SEK</p>
 		</div>
+
 	</div>
+	
 	<hr>
 
 	<div id="buttonDiv2" class="col-xs-12 col-sm-12 col-md-12">
-		<button id="fullRecipe" type="button" class="btn btn-warning btn-responsive medium-btn btn-block" style="">Go to full recipe</button>
+		<a href="#/fullrecipe" id="fullRecipe" pe="button" class="btn btn-warning btn-responsive medium-btn btn-block" role="button">Go to full recipe</a>
 	</div>
+
+	</div>
+
 
 </div>
 
