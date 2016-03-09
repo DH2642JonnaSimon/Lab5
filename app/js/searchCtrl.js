@@ -43,6 +43,4 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
       return Dinner.getNumberOfGuests();
     }
 
-
-
 });

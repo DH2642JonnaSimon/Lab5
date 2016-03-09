@@ -79,13 +79,13 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     var totalPrice = 0.00;
     var prices = [];
     var amountOfIng = 0.00;
-    if (this.pendingDish == ""){
+    if (this.pendingDish == "" || this.pendingDish === "" || this.pendingDish == null || this.pendingDish == "undefined"){
       for(d in this.menu){
         amountOfIng = 0.00;
           for(a in this.menu[d].Ingredients) {
-            amountOfIng += this.menu[d].Ingredients[a];
+            amountOfIng += this.menu[d].Ingredients[a].Quantity;
           }
-            var dishPrice = amountOfIng * this.numberOfGuests;
+            var dishPrice = amountOfIng;
             prices.push(dishPrice);
         }
 
@@ -96,7 +96,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       for(a in this.pendingDish.Ingredients) {
           amountOfIng += this.pendingDish.Ingredients[a].Quantity;
         }
-        pendingPrice = amountOfIng * this.numberOfGuests;
+        pendingPrice = amountOfIng;
         var status = false;
 
       for(d in this.menu){
@@ -112,7 +112,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
             }
 
           }
-            var dishPrice = amountOfIng * this.numberOfGuests;
+            var dishPrice = amountOfIng;
             prices.push(dishPrice);
         }
 

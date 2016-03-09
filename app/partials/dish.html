@@ -13,7 +13,7 @@ Instructions, Ingredients and total cost. -->
 				<image class="img-thumbnail " id="imagee" ng-src="{{dish.ImageURL}}" style=""></image>
 				<p>{{dish.Description}}</p>
 			</div>
-			<a href="#/search" id="back" pe="button" class="btn btn-warning btn-responsive back" role="button">back to Select Dish</a>
+			<a href="#/search" id="back" pe="button" class="btn btn-warning btn-responsive back" role="button" ng-click="removePendingDish()">back to Select Dish</a>
 		</div>
 		<div id="ingredientsContent" class="col-xs-12 col-sm-12 col-md-6">
 			<div class="table-responsive">

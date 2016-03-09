@@ -19,7 +19,7 @@ this with Total price of the menu -->
 			</tr>
 		</thead>
 		<tbody id="chart">
-			<tr ng-repeat="dish in menu">
+			<tr ng-repeat="dish in menu" ng-hide="category == dish.Category">
 				<td style="text-align: left;" ng-show="dish.Title"> {{dish.Title}} </td>
 				<td style="text-align: right;" ng-show="dish.Title"> {{prices[$index]*getNumberOfGuests() | number:2}} 
 				<span ng-click="removeDish($event)" id="{{dish.RecipeID}}" class="glyphicon glyphicon-remove rm"></td>

@@ -14,6 +14,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$cookieStore, $routePar
      	}
       Dinner.setPendingDish(data);
       $scope.pendingDishP = Dinner.getDishPrice(data);
+      $scope.category = data.Category;
       //alert(Dinner.getPendingDish());
      	$scope.totalPrice = pris;
    			},function(data){
@@ -28,14 +29,19 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$cookieStore, $routePar
     $scope.addToMenu = function(){
       var pendingDish = Dinner.getPendingDish();
       Dinner.addDishToMenu(pendingDish);
+      $scope.pendingDishP = 0.00;
+      Dinner.setPendingDish("");
       var menu = Dinner.menu;
       var menu = [];
       for(x in Dinner.menu){
         menu.push(Dinner.menu[x].RecipeID);
       }
       $cookieStore.put('menu', menu);
+    }
 
-
+    $scope.removePendingDish = function(){
+      $scope.pendingDishP = 0.00;
+      Dinner.setPendingDish("");
     }
 
 });

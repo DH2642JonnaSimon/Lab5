@@ -14,7 +14,6 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,$cookieStore,Dinner, 
       return Dinner.getNumberOfGuests();
   }
 
-  $scope.totalPrice = Dinner.getTotalMenuPrice();
 
   $scope.getMenu = function(){
     if($cookieStore.get("guests")){
@@ -54,6 +53,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,$cookieStore,Dinner, 
     for(x in Dinner.menu){
       menu.push(Dinner.menu[x].RecipeID);
     }
+    $scope.totalPrice = Dinner.getTotalMenuPrice();
     $cookieStore.put('menu', menu);    
   }
 
