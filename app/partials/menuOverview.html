@@ -1,15 +1,50 @@
 <!-- We include the sidebar as it is shared across two screens. -->
 
-
+<link rel="stylesheet" type="text/css" href="main.css">
 <!-- TODO in Lab 5: Display the dish information including image, Description, 
 Instructions, Ingredients and total cost. -->
+<div id="lastOverview" class="col-xs-12 col-sm-12 col-md-12" style="vertical-align: top; margin: 0 auto;">
 
-<div class="row" id="headRow"><div id="buttondiv" class="col-xs-12 col-sm-12 col-md-12">
-	<div id="mainContent" class="col-xs-12 col-sm-8 col-md-8">
-		<h1 id="headerContent">My dinner: '+numGuest+' people</h1>
+	<div class="row" id="headRow"><div id="buttondiv">
+		<div id="mainContent" class="col-xs-12 col-sm-8 col-md-8">
+			<h1 id="headerContent">My dinner: NUMBEROF GUESTS people</h1>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<button id="back2" type="button" class="button back btn btn-warning btn-responsive">Go back and edit dinner
+			</button>
+		</div>
 	</div>
-	<div class="col-xs-12 col-sm-4 col-md-4">
-		<button id="back2" type="button" class="button back btn btn-warning btn-responsive">Go back and edit dinner
-		</button>
+	<div id="mainRow" class="row table pre-scrollable col-xs-12 col-sm-12 col-md-12">
+		<div class="col-xs-9 col-sm-9 col-md-9" id="verticalLine">
+
+
+				<div ng-repeat="dish in menu" id="rootDivImage" class="col-xs-12 col-sm-4 col-md-4">
+					<div id="closureDiv">
+						<div id="overviewPic">
+							<div id="imageDiv">
+								<image class="img-thumbnail " src="' + finalMenu[x].ImageURL + '" style="height:180px;width: 180px;">
+								</image>
+							</div>
+							<div class="dishHeadDiv">
+								<h3 class="">{{dish.Title}}</h3>
+							</div>
+						</div>
+						<p class="oblique small white"> Price:{{prices[$index]*getNumberOfGuests()}}</p>
+					</div>
+				</div>
+
+
+
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3" id="TotPriceDiv">
+			<p id="TotPricePos" class="oblique big red">Total Price: 000000 SEK</p>
+		</div>
 	</div>
+	<hr>
+
+	<div id="buttonDiv2" class="col-xs-12 col-sm-12 col-md-12">
+		<button id="fullRecipe" type="button" class="btn btn-warning btn-responsive medium-btn btn-block" style="">Go to full recipe</button>
+	</div>
+
 </div>
+
