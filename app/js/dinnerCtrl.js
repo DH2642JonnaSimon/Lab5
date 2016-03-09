@@ -1,29 +1,63 @@
 // Dinner controller that we use whenever we have view that needs to 
 // display or modify the dinner menu
-dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
+dinnerPlannerApp.controller('DinnerCtrl', function ($scope,$cookieStore,Dinner, $routeParams) {
 
-  $scope.numberOfGuests = Dinner.getNumberOfGuests();
-
-Dinner.DishSearch.get({title_kw:'chicken'});
 
   $scope.setNumberOfGuest = function(number){
   	console.log("Set number of guests - controller");
     Dinner.setNumberOfGuests(number);
+    $scope.numberOfGuests = number;
+    $cookieStore.put('guests', number);
   }
 
   $scope.getNumberOfGuests = function() {
-  	console.log("Get number of guests - controller");
-    return Dinner.getNumberOfGuests();
+      return Dinner.getNumberOfGuests();
+  }
+
+  $scope.totalPrice = Dinner.getTotalMenuPrice();
+
+  $scope.getMenu = function(){
+    if($cookieStore.get("guests")){
+      Dinner.setNumberOfGuests($cookieStore.get("guests"));
+      $scope.numberOfGuests = $cookieStore.get("guests");
+    }else{
+      $scope.numberOfGuests = Dinner.getNumberOfGuests();
+    }
+    $scope.getNumberOfGuests();
+
+    var menuCookie = $cookieStore.get('menu');
+    console.log(menuCookie);
+    // Setting a cookie
+    
+    for(x in menuCookie){
+      if(menuCookie[x] != null){
+        Dinner.Dish.get({id:menuCookie[x]},function(data){
+          $scope.dish=data;
+          Dinner.addDishToMenu(data);
+          $scope.menu = Dinner.menu;
+          console.log(Dinner.menu);
+          var pris = 0.00;
+          $scope.prices = [];
+          $scope.prices = Dinner.getDishPrices();
+          $scope.totalPrice = Dinner.getTotalMenuPrice();
+        },function(data){
+            $scope.status = "There was an error";
+        });
+      }
+    }
+  }
+
+  $scope.removeDish = function($event){
+    Dinner.removeDishFromMenu(event.target.id);
+    var menu = Dinner.menu;
+    var menu = [];
+    for(x in Dinner.menu){
+      menu.push(Dinner.menu[x].RecipeID);
+    }
+    $cookieStore.put('menu', menu);    
   }
 
 
-    $scope.getMenu = function(){
-      $scope.menu = Dinner.menu;
-      console.log($scope.menu);
-      var pris = 0.00;
-      $scope.prices = [];
-      $scope.prices = Dinner.getDishPrices();
-    }
 
 
   // TODO in Lab 5: Implement the methods to get the dinner menu

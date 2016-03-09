@@ -10,7 +10,7 @@ this with Total price of the menu -->
 <div id="sideView" style="height:100%;" ng-controller="DinnerCtrl" ng-init="getMenu()">
 	<h3 style="margin-left: 10px;margin-top: 0px;">My Dinner</h3>
 	<p id="peopleParagraph">People:</p>
-	<input class="form-control" id="guestsInput" value="" type="number" name="Guests" min="1" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)">
+	<input class="form-control" id="guestsInput" type="number" name="Guests" min="1" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)">
 	<table class="table table-condensed table-hover" id="sideViewTable" style="text-align: right;">
 		<thead style="background-color: #C0C0C0;border-top: solid 3px black;border-bottom: solid 3px black;">
 					<tr>
@@ -21,17 +21,17 @@ this with Total price of the menu -->
 		<tbody id="chart">
 			<tr ng-repeat="dish in menu">
 				<td style="text-align: left;" ng-show="dish.Title"> {{dish.Title}} </td>
-				<td style="text-align: right;" ng-show="dish.Title"> {{prices[$index]*getNumberOfGuests()}} 
-				<span id="' + dish.RecipeID + '" class="glyphicon glyphicon-remove rm"></td>
-				<td ng-show="dish.Title" id="totalPrice"> SEK</td>
+				<td style="text-align: right;" ng-show="dish.Title"> {{prices[$index]*getNumberOfGuests() | number:2}} 
+				<span ng-click="removeDish($event)" id="{{dish.RecipeID}}" class="glyphicon glyphicon-remove rm"></td>
+				<td ng-show="dish.Title"></td>
 			</tr>
 			<tr>
 				<td id="dish" style="text-align: left;">Pending</td>
-				<td id="price" style="text-align: right;" colspan="2">0.00</td>
+				<td id="price" style="text-align: right;" colspan="2">{{pendingDishP*getNumberOfGuests() | number:2}}</td>
 			</tr>
 			<tr>
 				<td></td>
-				<td id="totalPrice"></td>
+				<td id="totalPrice">{{totalPrice*getNumberOfGuests() | number:2}} SEK</td>
 			</tr>
 		</tbody>
 	</table>

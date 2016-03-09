@@ -14,8 +14,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   r02x0R09O76JMCMc4nuM0PJXawUHpBUL
   H9n1zb6es492fj87OxDtZM9s5sb29rW3*/
 
-  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'r02x0R09O76JMCMc4nuM0PJXawUHpBUL'});
-  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'r02x0R09O76JMCMc4nuM0PJXawUHpBUL'});
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'0OV23011kU7B3VVVgxTTTIfdNXeTI3us'});
+  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'0OV23011kU7B3VVVgxTTTIfdNXeTI3us'});
   
   this.numberOfGuests = 1.00;
   this.menu = {"Appetizers": "", "Desserts": "", "Main Dish": ""};
@@ -76,12 +76,12 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
   //Returns the total price of the menu (all the ingredients multiplied by number of guests).
   this.getTotalMenuPrice = function() {
-    var totalPrice = 0;
+    var totalPrice = 0.00;
     var prices = [];
-    var amountOfIng = 0;
+    var amountOfIng = 0.00;
     if (this.pendingDish == ""){
       for(d in this.menu){
-        amountOfIng = 0;
+        amountOfIng = 0.00;
           for(a in this.menu[d].Ingredients) {
             amountOfIng += this.menu[d].Ingredients[a];
           }
@@ -100,7 +100,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
         var status = false;
 
       for(d in this.menu){
-        amountOfIng = 0;
+        amountOfIng = 0.00;
           if(this.pendingDish.Category == this.menu[d].Category){
             status = true;
             for(a in this.pendingDish.Ingredients) {
@@ -130,8 +130,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.getDishPrice = function(dish) {
       var price = 0.00;
 
-      for(ingredient in dish.ingredients){
-      price += dish.ingredients[ingredient].price;
+      for(ingredient in dish.Ingredients){
+      price += dish.Ingredients[ingredient].Quantity;
     }
     return price;
   }

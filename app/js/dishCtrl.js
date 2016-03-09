@@ -1,6 +1,6 @@
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
-dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
+dinnerPlannerApp.controller('DishCtrl', function ($scope,$cookieStore, $routeParams,Dinner) {
   // TODO in Lab 5: you need to get the dish according to the routing parameter
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
@@ -13,6 +13,8 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
      		pris += data.Ingredients[x].Quantity;
      	}
       Dinner.setPendingDish(data);
+      $scope.pendingDishP = Dinner.getDishPrice(data);
+      //alert(Dinner.getPendingDish());
      	$scope.totalPrice = pris;
    			},function(data){
      	$scope.status = "There was an error";
@@ -26,6 +28,14 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
     $scope.addToMenu = function(){
       var pendingDish = Dinner.getPendingDish();
       Dinner.addDishToMenu(pendingDish);
+      var menu = Dinner.menu;
+      var menu = [];
+      for(x in Dinner.menu){
+        menu.push(Dinner.menu[x].RecipeID);
+      }
+      $cookieStore.put('menu', menu);
+
+
     }
 
 });
